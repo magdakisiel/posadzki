@@ -139,6 +139,7 @@ figure {
 	padding: 0;
 	margin-block-start: 0;
 	margin-block-end: 0;
+	justify-content: center;
 }
 
 img#photo {
@@ -147,8 +148,7 @@ img#photo {
 	border: solid 2px #ffd633;
 }
 
-
-figcaption {
+#figcaption {
 	margin-top: 0;
 	padding: 30px 5px;
 }
@@ -239,6 +239,7 @@ h4 {
 
 ul.footer-navbar {
 	padding-inline-start: 0;
+	-webkit-padding-start: 0;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -302,7 +303,7 @@ a.nav-footerlink:hover {
 	}
 }
 
-@media only screen and (max-width: 961px) {
+@media only screen and (max-width: 980px) {
 	body {
 		font-size: 13px;
 	}
@@ -319,6 +320,8 @@ a.nav-footerlink:hover {
 	.flex-container > div {
 		margin: 10px 0;
 	}
+
+	figure
 }
 
 @media only screen and (max-width: 789px)
@@ -364,7 +367,7 @@ a.nav-footerlink:hover {
 		width: 40%;
 	}
 
-	figcaption {
+	#figcaption {
 		width: 55%;
 		padding: 20px 0;
 	}
@@ -400,8 +403,12 @@ a.nav-footerlink:hover {
 		flex-direction: column;
 	}
 
-	figure, figcaption {
+	figure {
 		width: 100%;
+	}
+
+	#figcaption {
+		width: 99.5%;
 	}
 
 }
