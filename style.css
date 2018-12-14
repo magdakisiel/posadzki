@@ -66,9 +66,10 @@ li.nav-item {
 	justify-content: flex-end;
 }
 
-h2 {
+h1 {
 	text-align: right;
 	margin: 0;
+	font-size: 25px;
 }
 
 #container {
@@ -100,7 +101,7 @@ h2 {
 	padding: 0;
 }
 
-h1 {
+h2 {
 	display: inline-block;
 	padding: 7px 0;
 	border-bottom: solid 4px #11920d;
@@ -330,6 +331,10 @@ a.footerlink:hover {
 		padding: 2px 0;
 	}
 
+	h1 {
+		font-size: 22px;
+	}
+
 	#main {
 		width: 95%;
 	}
@@ -390,6 +395,10 @@ a.footerlink:hover {
 	.nav-items {
 		flex-direction: column;
 		align-items: flex-start;
+	}
+
+	h1 {
+		font-size: 20px;
 	}
 
 	#aside-add {
