@@ -1,0 +1,322 @@
+$aside-box: solid 1px darkgray;
+$xxl: 1112px;
+$xl: 1063px;
+$l: 1000px;
+$md: 980px;
+$sm: 815px;
+$xs: 580px;
+$green: #11920d;
+
+@mixin maxWidth($padding: 10px 0) {
+	max-width: 1100px;
+	margin: auto;
+	text-align: center;
+	padding: $padding;
+}
+
+@mixin width ($margin: auto) {
+	width: 95%;
+	margin: $margin;
+	display: flex;
+	flex-wrap: wrap;
+	text-align: left;
+}
+
+%between {
+	@include width();
+	justify-content: space-between;
+}
+
+@mixin black ($side: border-top, $color: $green) {
+	background-color: #262626;
+	color: white;
+	#{$side}: solid 3px $color;
+}
+
+@mixin borderRadius($bRadius: 30px) {
+	border-radius: $bRadius;
+	-moz-border-radius: $bRadius;
+	-webkit-border-radius: $bRadius;
+}
+
+@mixin ul {
+	text-align: left;
+	padding-left: 0;
+	list-style-type: none;
+	justify-content: space-around;
+	align-items: center;
+}
+
+@mixin respondTo($query, $val: max-width, ) {
+	@media ($val: $query) {
+		@content
+	}
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+	text-align: center;
+	color: #404040;
+	line-height: 1.7;
+	margin: 0;
+	@include respondTo($xl) {
+		font-size: 14px;
+		}
+	@include respondTo($md) {
+		font-size: 13px;
+	}
+	@include respondTo($sm) {
+		font-size: 12px;
+	}	
+}
+
+h1 {
+	font-size: 1.6em;
+}
+
+h2 {
+	font-size: 1.4em;
+	display: inline-block;
+	border-bottom: solid 4px $green;
+}
+
+h3 {
+	font-size: 1.2em;
+	padding: 0px 20px;
+	margin: 10px 0;
+}
+
+h4 {
+	font-size: 1.15em;
+	color: white;
+	margin: 10px 0 5px 0;
+}
+
+p {
+	@include respondTo($md) {
+		margin: 0;
+	}
+}
+
+a {
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.navbar {
+	@include maxWidth();
+	font-size: 13px;
+}
+
+.nav-items {
+	@extend %between;
+	@include respondTo($xs) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	ul {
+		@include ul();
+		display: flex;
+		@include respondTo($xxl) {
+			justify-content: flex-start;
+			}
+		@include respondTo($sm) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		li {
+			padding: 0 0 0 20px;
+			text-transform: uppercase;
+			@include respondTo($xl) {
+				padding: 0 20px 0 0;
+			}
+			@include respondTo($sm) {
+				padding: 2px 0;
+			}
+			a {
+				color: #404040;
+				&:hover {
+					color: lighten($green, 5%);
+				}
+			}
+		}
+	}
+}
+
+.brand {
+	margin: 10px 10px 0 0;
+	img {
+		height: 30px;
+		@include respondTo($xl) {
+			margin-bottom: 0;
+		}
+	}
+}
+
+header, footer {
+	@include black();
+}
+
+.header-container {
+	@include maxWidth();
+	.flex-header {
+		@include width();
+		justify-content: flex-end;
+	}
+}
+
+.container {
+	@include maxWidth(25px 0);
+	.flex-container {
+		@extend %between;
+	}
+}
+
+#main {
+	width: 60%;
+	@include respondTo($sm) {
+		@include width(0);
+	}
+}
+
+#aside {
+	width: 35%;
+	margin: 30px 0;
+	@include respondTo($sm) {
+		@include width(0);
+		margin-top: 40px;
+	}
+}
+
+.aside-text {
+	border: $aside-box;
+	padding: 20px 5px;
+	@include respondTo($sm) {
+		width: 100%;
+		padding: 10px 0;
+	}
+	ul {
+		@include respondTo($sm) {
+			padding-right: 10px;
+		}
+	}
+	p {
+		padding: 5px 20px;
+		margin-bottom: 0px;
+	}
+}
+
+#aside-add {
+	padding: 40px 0px 20px 0;
+	@include respondTo($sm) {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		margin: 0;
+	}
+	@include respondTo($xs) {
+		flex-direction: column;
+	}
+}
+
+figure {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	@include respondTo($l)	{
+		width: 99.7%;
+		margin-left: 0.1%;
+	}
+	@include respondTo($md) {
+		width: 99%;
+		margin-left: 0.6%;
+	}
+	@include respondTo($sm) {
+		height: 100%;
+		margin-left: 0;
+	}
+	@include respondTo($xs) {
+		width: 100.5%;
+	}
+	img {
+		width: 100%;
+		height: 98.7%;
+		border: solid 2px $green;
+	}
+}
+
+.button {
+	text-align: center;
+	button {
+		@include black(border,#262626);
+		@include borderRadius();
+		padding: 8px 20px;
+		margin-bottom: 20px;
+		font-size: 1em;
+	}
+}
+
+#footer {
+	@include maxWidth(20px 0);
+	color: #b3b3b3;
+}
+
+.flex-footer {
+	@extend %between;
+	&.div {
+		padding: 10px 0;
+		p {
+			padding: 5px 0;
+			span {
+				color: lighten($green, 5%);
+			}
+		}
+	}
+	a {
+		color: #b3b3b3;
+		&:hover {
+			color: white;
+		}
+	}
+}
+
+#contact, #nav-foot {
+	margin-right: 20px;
+}
+
+#contact-data {
+	border-top: solid 3px lighten($green, 5%);
+	padding-top: 20px;
+	margin: 15px 0;
+	span {
+		font-weight: 600;
+		padding: 30px 0px;
+	}
+}
+
+#nav-foot {
+	width: 20%;
+	@include respondTo($sm) {
+		width: 40%;
+	}
+	ul {
+	@include ul();
+	}
+}
+
+#info {
+	width: 40%;
+	@include respondTo($sm) {
+		width: 100%;
+	}
+}
+
+#end {
+	width: 95%;
+	margin: auto;
+	padding: 10px 0;
+}
+
+
